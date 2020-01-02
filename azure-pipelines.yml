@@ -14,7 +14,7 @@ variables:
   buildConfiguration: 'Release'
 
 steps:
-- task: UseNode@1
+- task: NodeTool@0
   displayName: Use Node
   inputs:
     version: 'Use Node 6.x'
