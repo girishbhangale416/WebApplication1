@@ -6,6 +6,11 @@
 trigger:
 - master
 
+stages:
+- stage: Build
+  jobs:
+  - job: Build
+
 pool:
     name: Azure Pipelines
     vmImage: 'windows-2019'
@@ -54,3 +59,42 @@ steps:
     PathtoPublish: 'WebApp'
     ArtifactName: 'ARM'
     publishLocation: 'Container'
+
+- stage: Deploy
+  jobs:
+  - job: Deploy
+    pool:
+      name: 'windows-2019'
+    variables:
+      variables:
+        ResourceGroupName: '$(Prefix)-$(Release.EnvironmentName)-$(Build.Buildid)-RG'
+        LocationName: 'East US'
+        WebAppName: '$(Prefix)-$(Release.EnvironmentName)-$(Build.Buildid)'
+
+    steps:
+- task: AzureResourceManagerTemplateDeployment@3
+  inputs:
+    deploymentScope: 'Resource Group'
+    azureResourceManagerConnection: 'Azure'
+    subscriptionId: '1a35a0e9-7a1c-4123-8be0-c86e69bb0905'
+    action: 'Create Or Update Resource Group'
+    resourceGroupName: '$(ResourceGroupName)'
+    location: '$(LocationName)'
+    templateLocation: 'Linked artifact'
+    csmFile: '$(System.DefaultWorkingDirectory)/ARM/WebSite.json'
+    csmParametersFile: '$(System.DefaultWorkingDirectory)/ARM/WebSite.parameters.json'
+    overrideParameters: '-hostingPlanName "girishbh-service-plan-Test" -skuName "F1" -skuCapacity 1 -webSiteName $(WebAppName)'
+    deploymentMode: 'Validation'
+- task: AzureResourceManagerTemplateDeployment@3
+  inputs:
+    deploymentScope: 'Resource Group'
+    azureResourceManagerConnection: 'Azure'
+    subscriptionId: '1a35a0e9-7a1c-4123-8be0-c86e69bb0905'
+    action: 'Create Or Update Resource Group'
+    resourceGroupName: '$(ResourceGroupName)'
+    location: '$(LocationName)'
+    templateLocation: 'Linked artifact'
+    csmFile: '$(System.DefaultWorkingDirectory)/ARM/WebSite.json'
+    csmParametersFile: '$(System.DefaultWorkingDirectory)/ARM/WebSite.parameters.json'
+    overrideParameters: '-hostingPlanName "girishbh-service-plan-Test" -skuName "F1" -skuCapacity 1 -webSiteName $(WebAppName)'
+    deploymentMode: 'Incremental'
