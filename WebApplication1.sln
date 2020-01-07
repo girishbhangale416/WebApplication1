@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApplication1", "WebAppli
 EndProject
 Project("{151D2E53-A2C4-4D7D-83FE-D05416EBD58E}") = "WebApp", "WebApp\WebApp.deployproj", "{290185D9-4CC5-4124-A719-FBBD7D245D49}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SeleniumDemo", "SeleniumDemo\SeleniumDemo.csproj", "{2B12D7DE-FF02-4F84-875A-BCE61F1CF278}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{290185D9-4CC5-4124-A719-FBBD7D245D49}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{290185D9-4CC5-4124-A719-FBBD7D245D49}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{290185D9-4CC5-4124-A719-FBBD7D245D49}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2B12D7DE-FF02-4F84-875A-BCE61F1CF278}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2B12D7DE-FF02-4F84-875A-BCE61F1CF278}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2B12D7DE-FF02-4F84-875A-BCE61F1CF278}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2B12D7DE-FF02-4F84-875A-BCE61F1CF278}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
