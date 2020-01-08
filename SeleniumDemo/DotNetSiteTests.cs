@@ -38,7 +38,7 @@ namespace Demo.SeleniumTests
             using (var driver = GetDriver())
             {
                 //Navigate to DotNet website
-                driver.Navigate().GoToUrl((Environment.GetEnvironmentVariable("appUrl"));
+                driver.Navigate().GoToUrl(Environment.GetEnvironmentVariable("appUrl"));
 
                 driver.FindElement(By.XPath("//a[@href='/counter']")).Click();
                 driver.FindElement(By.XPath("//button[text()='Increment']")).Click();
@@ -55,7 +55,7 @@ namespace Demo.SeleniumTests
         {
             var options = new ChromeOptions();
 
-            if(bool.Parse((Environment.GetEnvironmentVariable("headless")))
+            if(bool.Parse(Environment.GetEnvironmentVariable("headless")))
             {
                 options.AddArgument("headless");
             }
