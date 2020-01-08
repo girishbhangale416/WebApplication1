@@ -55,7 +55,7 @@ namespace Demo.SeleniumTests
         {
             var options = new ChromeOptions();
 
-            if(bool.Parse((string)TestContext.Properties["headless"]))
+            if(bool.Parse(Enviroment.GetEnviromentVariable("headless")))
             {
                 options.AddArgument("headless");
             }
