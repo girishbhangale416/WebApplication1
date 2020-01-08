@@ -19,7 +19,7 @@ namespace Demo.SeleniumTests
             using (var driver = GetDriver())
             {
                 //Navigate to DotNet website
-                driver.Navigate().GoToUrl((string)TestContext.Properties["webAppUrl"]);
+                driver.Navigate().GoToUrl(Enviroment.GetEnviromentVariable("appUrl"));
 
                 driver.FindElement(By.XPath("//a[@href='/counter']")).Click();
                 driver.FindElement(By.XPath("//button[text()='Increment']")).Click();
@@ -38,7 +38,7 @@ namespace Demo.SeleniumTests
             using (var driver = GetDriver())
             {
                 //Navigate to DotNet website
-                driver.Navigate().GoToUrl((string)TestContext.Properties["webAppUrl"]);
+                driver.Navigate().GoToUrl(Enviroment.GetEnviromentVariable("appUrl"));
 
                 driver.FindElement(By.XPath("//a[@href='/counter']")).Click();
                 driver.FindElement(By.XPath("//button[text()='Increment']")).Click();
